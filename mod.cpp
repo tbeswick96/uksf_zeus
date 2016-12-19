@@ -1,0 +1,12 @@
+name = "UKSF Zeus";
+picture = "modLarge.paa";
+actionName = "GitHub";
+action = "https://github.com/tbeswick96/uksf_zeus";
+description = "UKSF - All custom mods and patches";
+logo = "mod.paa";
+logoOver = "mod.paa";
+tooltip = "UKSF";
+tooltipOwned = "UKSF Owned";
+overview = "UKSF Mods: All custom mods and patches";
+author = "UKSF SR11 Team";
+overviewPicture = "modLarge.paa";
