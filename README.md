@@ -9,6 +9,10 @@
         <img src="https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square" alt="License">
     </a>
 </p>
+<p align="center">
+    <sup>Requires the latest version of <a href="https://github.com/CBATeam/CBA_A3/releases">CBA A3</a>.<br>
+    Requires the latest version of <a href="https://github.com/acemod/ACE3/releases">ACE 3</a>.</sup>
+</p>
 
 # UKSF Zeus
 
