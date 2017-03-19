@@ -1,45 +1,26 @@
 /*
-	Author:
-		Tim Beswick
+    Author:
+        Tim Beswick
 
-	Description:
-		Initialises curator & disconnect EH
+    Description:
+        Initialises curator & disconnect EH
 
-	Parameter(s):
-		None
+    Parameter(s):
+        None
 
-	Return Value:
-		None
+    Return Value:
+        None
 */
 #include "script_component.hpp"
 
 _group = creategroup sideLogic;
 
-_curator = _group createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-SETPVAR(_curator,text,QUOTE(GVAR(curator_1)));
-_curator addCuratorAddons activatedAddons;
-GVAR(curatorObjects) set [0, _curator];
+ADD_CURATOR(0);
+ADD_CURATOR(1);
+ADD_CURATOR(2);
+ADD_CURATOR(3);
+ADD_CURATOR(4);
 
-_curator = _group createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-SETPVAR(_curator,text,QUOTE(GVAR(curator_2)));
-_curator addCuratorAddons activatedAddons;
-GVAR(curatorObjects) set [1, _curator];
+addMissionEventHandler ["HandleDisconnect", {_this call FUNC(disconnect)}];
 
-_curator = _group createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-SETPVAR(_curator,text,QUOTE(GVAR(curator_3)));
-_curator addCuratorAddons activatedAddons;
-GVAR(curatorObjects) set [2, _curator];
-
-_curator = _group createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-SETPVAR(_curator,text,QUOTE(GVAR(curator_4)));
-_curator addCuratorAddons activatedAddons;
-GVAR(curatorObjects) set [3, _curator];
-
-_curator = _group createUnit ["ModuleCurator_F", [0,0,0], [], 0, "NONE"];
-SETPVAR(_curator,text,QUOTE(GVAR(curator_5)));
-_curator addCuratorAddons activatedAddons;
-GVAR(curatorObjects) set [4, _curator];
-
-missionNamespace setVariable [QGVAR(curatorNames), ["","","","",""], true];
-
-[QGVAR(disconnectEHKey), "onPlayerDisconnected", FUNC(disconnect), [_id, _uid, _name, _jip, _owner]] call BIS_fnc_addStackedEventHandler;
+GVAR(curatorInitComplete) = true;
