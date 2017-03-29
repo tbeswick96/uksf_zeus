@@ -25,4 +25,3 @@ if (_index != -1) then {
     unassignCurator (GVAR(curatorObjects) select _index);
 };
 missionNamespace setVariable [QGVAR(curatorNames), _names, true];
-	
