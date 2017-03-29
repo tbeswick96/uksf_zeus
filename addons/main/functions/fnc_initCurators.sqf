@@ -24,3 +24,4 @@ ADD_CURATOR(4);
 addMissionEventHandler ["HandleDisconnect", {_this call FUNC(disconnect)}];
 
 GVAR(curatorInitComplete) = true;
+publicVariable QGVAR(curatorInitComplete);

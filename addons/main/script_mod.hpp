@@ -3,6 +3,10 @@
 #define MAINPREFIX u
 #define PREFIX uksf_zeus
 
+#include "\u\uksf_zeus\addons\main\script_version.hpp"
+#define VERSION MAJOR.MINOR.PATCHLVL
+#define VERSION_AR MAJOR,MINOR,PATCHLVL
+
 // MINIMAL required version for the Mod. Components can specify others..
 #define REQUIRED_VERSION 1.64
 #define REQUIRED_CBA_VERSION {3,1,1}
