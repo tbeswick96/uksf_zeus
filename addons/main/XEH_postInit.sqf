@@ -1,25 +1,41 @@
 #include "script_component.hpp"
 
-if (isServer) then {
-	call FUNC(initCurators);
-};
-
-[{
-    GVAR(curatorInitComplete)
-},{
-    if (!isMultiplayer) then {
-        missionNamespace setVariable [QGVAR(curatorNames), [(name player),"","","",""], true];
-        player assignCurator (GVAR(curatorObjects) select 0);
-    };
-
-    if (hasInterface) then {
-        if (isNil {player getVariable QGVAR(actionsAdded)}) then {
-            player setVariable [QGVAR(actionsAdded), false, true];
+if (hasInterface) then {
+    ["Man", "respawn", {
+        private _index = (GVAR(curatorPlayers) find (name player));
+        if (_index > -1) then {
+            [QGVAR(curatorUnassign), [GVAR(curatorObjects) select _index]] call CBA_fnc_serverEvent;
+            [QGVAR(curatorAssign), [player]] call CBA_fnc_serverEvent;
+        } else {
+            if (WHITELISTED) then {
+                call FUNC(curatorLogin);
+            };
         };
-        call FUNC(addAction);
-    };
+    }, true, [], true] call CBA_fnc_addClassEventHandler;
 
     [{
-        {_x addCuratorEditableObjects [allMissionObjects "all", true]; false} count allCurators;
-    }, [], 0.5] call cba_fnc_waitAndExecute;
-}, []] call CBA_fnc_waitUntilAndExecute;
+        !(isNull (findDisplay 46))
+    },{
+        [] spawn {
+            if (isMultiplayer) then {
+                sleep 0.25;
+                while {isNull (uiNamespace getVariable "RscDisplayLoading")} do {
+                    startLoadingScreen ["Loading"];
+                };
+                private _step = (1 / GVAR(curatorsMax));
+                for "_index" from 1 to GVAR(curatorsMax) do {
+                    progressLoadingScreen (_step * _index);
+                    uiSleep 1;
+                };
+                endLoadingScreen;
+            };
+
+            {
+               call FUNC(addCuratorActions);
+                if (!isMultiplayer) then {
+                    call FUNC(curatorLogin);
+                }; 
+            } call CBA_fnc_directCall;            
+        };
+    }] call CBA_fnc_waitUntilAndExecute;
+};

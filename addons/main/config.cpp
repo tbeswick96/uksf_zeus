@@ -18,6 +18,7 @@ class CfgPatches {
 			"ace_interaction"
         };
         author = QUOTE(UKSF);
+        authors[] = { "Beswick.T" };
         url = QUOTE(www.uk-sf.com);
         VERSION_CONFIG;
     };
@@ -32,7 +33,7 @@ class CfgMods {
         hideName = "true";
         actionName = "Website";
         action = CSTRING(URL);
-        description = "Issue Tracker: https://github.com/tbeswick96/uksf_zeus/issues";
+        description = "Issue Tracker: https://github.com/uksf/zeus/issues";
     };
 };
 

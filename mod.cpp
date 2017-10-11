@@ -1,7 +1,7 @@
 name = "UKSF Zeus";
 picture = "modLarge.paa";
 actionName = "GitHub";
-action = "https://github.com/tbeswick96/uksf_zeus";
+action = "https://github.com/uksf/zeus";
 description = "UKSF Zeus";
 logo = "mod.paa";
 logoOver = "mod.paa";
